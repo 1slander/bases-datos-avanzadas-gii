@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<correo fecha="2025-10-27"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="correo.xsd">
+
+    <remitente nombre="Profesor de Bases de Datos" email="profesor@unir.edu"/>
+    <destinatario nombre="Estudiante" email="alumno@unir.edu"/>
+    <asunto>Bienvenida a la asignatura de Bases de Datos Avanzadas</asunto>
+
+    <mensaje>
+        <saludo>Estimado/a estudiante,</saludo>
+        <cuerpo>
+            Te damos la bienvenida a la asignatura Bases de Datos Avanzadas.
+            En este curso veremos distintos tipos de bases de datos.
+        </cuerpo>
+        <despedida>¡Empezamos ya!</despedida>
+
+        <firma>
+            <nombre>Profesor del curso</nombre>
+            <departamento>Escuela Superior de Ingeniería y Tecnología</departamento>
+            <universidad>UNIR</universidad>
+        </firma>
+    </mensaje>
+</correo>

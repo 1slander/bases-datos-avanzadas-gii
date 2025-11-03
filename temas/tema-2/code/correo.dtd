@@ -1,0 +1,26 @@
+<!ELEMENT correo (remitente, destinatario, asunto, mensaje)>
+<!ATTLIST correo
+    fecha CDATA #REQUIRED>
+
+<!ELEMENT remitente EMPTY>
+<!ATTLIST remitente
+    nombre CDATA #REQUIRED
+    email CDATA #REQUIRED>
+
+<!ELEMENT destinatario EMPTY>
+<!ATTLIST destinatario
+    nombre CDATA #REQUIRED
+    email CDATA #REQUIRED>
+
+<!ELEMENT asunto (#PCDATA)>
+
+<!ELEMENT mensaje (saludo, cuerpo, despedida, firma)>
+
+<!ELEMENT saludo (#PCDATA)>
+<!ELEMENT cuerpo (#PCDATA)>
+<!ELEMENT despedida (#PCDATA)>
+
+<!ELEMENT firma (nombre, departamento, universidad)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT departamento (#PCDATA)>
+<!ELEMENT universidad (#PCDATA)>

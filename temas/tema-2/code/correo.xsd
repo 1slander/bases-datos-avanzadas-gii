@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+    <xs:element name="correo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="remitente" type="RemitenteType"/>
+                <xs:element name="destinatario" type="DestinatarioType"/>
+                <xs:element name="asunto" type="xs:string"/>
+                <xs:element name="mensaje" type="MensajeType"/>
+            </xs:sequence>
+            <xs:attribute name="fecha" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="RemitenteType">
+        <xs:attribute name="nombre" type="xs:string" use="required"/>
+        <xs:attribute name="email" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="DestinatarioType">
+        <xs:attribute name="nombre" type="xs:string" use="required"/>
+        <xs:attribute name="email" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="MensajeType">
+        <xs:sequence>
+            <xs:element name="saludo" type="xs:string"/>
+            <xs:element name="cuerpo" type="xs:string"/>
+            <xs:element name="despedida" type="xs:string"/>
+            <xs:element name="firma" type="FirmaType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FirmaType">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="departamento" type="xs:string"/>
+            <xs:element name="universidad" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

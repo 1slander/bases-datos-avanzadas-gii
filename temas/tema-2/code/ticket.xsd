@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+    <xs:element name="ticket">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ferreteria" type="FerreteriaType"/>
+                <xs:element name="cliente" type="ClienteType"/>
+                <xs:element name="lineas" type="LineasType"/>
+                <xs:element name="totales" type="TotalesType"/>
+            </xs:sequence>
+            <xs:attribute name="numero" type="xs:string" use="required"/>
+            <xs:attribute name="fecha" type="xs:string" use="required"/>
+            <xs:attribute name="hora" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="FerreteriaType">
+        <xs:sequence>
+            <xs:element name="direccion" type="xs:string"/>
+            <xs:element name="telefono" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="nombre" type="xs:string" use="required"/>
+        <xs:attribute name="cif" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="ClienteType">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="tipo" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="particular"/>
+                    <xs:enumeration value="empresa"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="LineasType">
+        <xs:sequence>
+            <xs:element name="linea" type="LineaType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="LineaType">
+        <xs:sequence>
+            <xs:element name="producto" type="ProductoType"/>
+            <xs:element name="cantidad" type="xs:decimal"/>
+            <xs:element name="precioUnitario" type="xs:decimal"/>
+            <xs:element name="subtotal" type="xs:decimal"/>
+        </xs:sequence>
+        <xs:attribute name="num" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="ProductoType">
+        <xs:sequence>
+            <xs:element name="codigo" type="xs:string"/>
+            <xs:element name="descripcion" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TotalesType">
+        <xs:sequence>
+            <xs:element name="baseImponible" type="xs:decimal"/>
+            <xs:element name="iva" type="IVAType"/>
+            <xs:element name="totalPagar" type="xs:decimal"/>
+            <xs:element name="metodoPago" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="IVAType">
+        <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+                <xs:attribute name="porcentaje" type="xs:decimal" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+</xs:schema>

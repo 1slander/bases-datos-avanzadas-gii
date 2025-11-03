@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ticket numero="TCK-2025-004512"
+        fecha="2025-10-27"
+        hora="10:43:12"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="ticket.xsd">
+
+    <ferreteria nombre="Ferretería El Tornillo Feliz" cif="B12345678">
+        <direccion>Calle Mayor 14, 39001 Santander</direccion>
+        <telefono>942123456</telefono>
+    </ferreteria>
+
+    <cliente tipo="particular">
+        <nombre>Juan Pérez</nombre>
+    </cliente>
+
+    <lineas>
+        <linea num="1">
+            <producto>
+                <codigo>TOR-5x40</codigo>
+                <descripcion>Tornillos acero zincado 5x40 (caja 50 uds)</descripcion>
+            </producto>
+            <cantidad>2</cantidad>
+            <precioUnitario>3.50</precioUnitario>
+            <subtotal>7.00</subtotal>
+        </linea>
+
+        <linea num="2">
+            <producto>
+                <codigo>MASI-01</codigo>
+                <descripcion>Masilla reparadora madera 250g</descripcion>
+            </producto>
+            <cantidad>1</cantidad>
+            <precioUnitario>6.95</precioUnitario>
+            <subtotal>6.95</subtotal>
+        </linea>
+
+        <linea num="3">
+            <producto>
+                <codigo>GUAN-PRO</codigo>
+                <descripcion>Guantes protección nitrilo talla L</descripcion>
+            </producto>
+            <cantidad>3</cantidad>
+            <precioUnitario>2.20</precioUnitario>
+            <subtotal>6.60</subtotal>
+        </linea>
+    </lineas>
+
+    <totales>
+        <baseImponible>20.55</baseImponible>
+        <iva porcentaje="21">4.32</iva>
+        <totalPagar>24.87</totalPagar>
+        <metodoPago>Tarjeta</metodoPago>
+    </totales>
+
+</ticket>
