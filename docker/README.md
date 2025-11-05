@@ -29,3 +29,40 @@ Notas:
 * En Windows, si el puerto 5432 está ocupado, cambie el mapeo de puertos (por ejemplo `5433:5432`).
 
 * Los scripts SQL colocados en `postgres/init` se ejecutan automáticamente al crear el contenedor de la base de datos.
+
+### Conectarse a pgAdmin y añadir una conexión a la base de datos
+
+1. Levantar los contenedores
+
+2. Abrir pgAdmin en el navegador:
+   * URL: <http://localhost:8080>
+   * Usuario: <admin@example.com>
+   * Contraseña: admin
+
+3. Añadir un nuevo servidor en pgAdmin:
+   * Menú: "Create" → "Server..."
+   * Pestaña General:
+     * Name: `demo_xml`
+   * Pestaña Connection:
+     * Host name/address: `db`
+     * Port: `5432`
+     * Maintenance DB: `demo_xml`
+     * Username: `profesor`
+     * Password: `postgres`
+     * Marcar "Save password" si se desea
+   * Guardar y conectar.
+
+4. Comprobación y resolución de problemas:
+   * Ver el estado de los contenedores:
+
+     ```powershell
+     docker compose ps
+     ```
+
+   * Ver logs del servicio de BD:
+
+     ```powershell
+     docker compose logs -f db
+     ```
+
+   * Si hay problemas de conexión, comprobar que el servicio `db` está "healthy" y que no hay conflicto en el puerto (Windows).
