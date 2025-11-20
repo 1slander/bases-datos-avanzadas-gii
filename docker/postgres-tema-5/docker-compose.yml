@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+  db_centro:
+    image: postgres:16
+    container_name: db_centro
+    environment:
+      POSTGRES_USER: profesor
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: demos
+    volumes:
+      - centro-data:/var/lib/postgresql/data
+      - ./init/centro:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U profesor -d demos"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  db_norte:
+    image: postgres:16
+    container_name: db_norte
+    environment:
+      POSTGRES_USER: profesor
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: demos
+    volumes:
+      - norte-data:/var/lib/postgresql/data
+      - ./init/norte:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U profesor -d demos"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  db_coord:
+    image: postgres:16
+    container_name: db_coord
+    environment:
+      POSTGRES_USER: profesor
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: demos
+    volumes:
+      - coord-data:/var/lib/postgresql/data
+      - ./init/coord:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U profesor -d demos"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  pgadmin:
+    image: dpage/pgadmin4:9
+    container_name: pgadmin_distrib
+    depends_on:
+      db_centro:
+        condition: service_healthy
+      db_norte:
+        condition: service_healthy
+      db_coord:
+        condition: service_healthy
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"     # Acceso: http://localhost:8080
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  centro-data:
+  norte-data:
+  coord-data:
+  pgadmin-data:
