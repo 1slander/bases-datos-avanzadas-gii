@@ -11,6 +11,7 @@ Este material está disponible libremente, bajo la responsabilidad exclusiva de 
 * [Tema 2: Lenguaje XML](temas/tema-2/README.md)
 * [Tema 3: Bases de Datos para Documentos XML](temas/tema-3/README.md)
 * [Tema 4 — Bases de Datos Paralelas](temas/tema-4/README.md)
+* [Tema 5 — Bases de Datos Distribuidas](temas/tema-5/README.md)
 
 ## Herramientas
 
