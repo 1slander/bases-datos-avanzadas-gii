@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  demos-db:
+    image: postgres:16
+    container_name: demos-db
+    environment:
+      POSTGRES_USER: profesor
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: demos
+    ports:
+      - "5432:5432"              # Cambia a "5433:5432" si el 5432 está ocupado
+    volumes:
+      - demos-data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U profesor -d demos"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+
+  pgadmin:
+    image: dpage/pgadmin4:9
+    container_name: pgadmin
+    depends_on:
+      demos-db:
+        condition: service_healthy
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_CHECK_EMAIL_DELIVERABILITY: 'False'
+    ports:
+      - "8080:80"                # Acceso web: http://localhost:8080
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  demos-data:
+  pgadmin-data:
