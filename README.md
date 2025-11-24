@@ -12,6 +12,7 @@ Este material está disponible libremente, bajo la responsabilidad exclusiva de 
 * [Tema 3: Bases de Datos para Documentos XML](temas/tema-3/README.md)
 * [Tema 4 — Bases de Datos Paralelas](temas/tema-4/README.md)
 * [Tema 5 — Bases de Datos Distribuidas](temas/tema-5/README.md)
+* [Tema 6 — Indexación y Asociación](temas/tema-6/README.md)
 
 ## Herramientas
 
