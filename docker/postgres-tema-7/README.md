@@ -151,8 +151,6 @@ WHERE cliente = 'Ana' AND fecha >= now() - interval '2 days';
 COMMIT;
 ```
 
----
-
 #### 📌 SESIÓN B
 
 ```sql
